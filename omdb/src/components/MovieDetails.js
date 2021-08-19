@@ -12,22 +12,21 @@ import PropTypes from 'prop-types';
      <p>{props.description}</p>
      <h3>Actors</h3>
      <p>{props.actors_name}</p>
+     <h3>Released</h3>
+     <p>{props.Released}</p>
       </div>
       
     </div>)
     }
     MovieDetails.propTypes = {
-        // title:PropTypes.number.isRequired ,
+        title:PropTypes.number.isRequired ,
         rating:PropTypes.number,
         pg:PropTypes.string,
         posterUrl:PropTypes.string
     }
     MovieDetails.defaultProps = {
-       
-        title:"movie title" ,
+       title:"movie title" ,
         rating:10,
         pg:"pg",
-
-
     }
     export default MovieDetails

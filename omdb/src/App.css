@@ -34,13 +34,13 @@ margin-left: 10px;
 .movie{
   border: 1px solid black;
   margin-bottom: 50px;
-  width: 100px;
+  width: 400px;
   margin-left: 100px;
   
 }
 .App {
   /* text-align: center; */
-  width:100px;
+  /* width:200px; */
 
 
 }
@@ -57,6 +57,10 @@ margin-left: 3px;
 }
 .title{
   padding-left: 1px; 
+}
+.movie_list{
+  display: flex;
+  width: 400px;
 }
 /* .App-logo {
   height: 40vmin;
