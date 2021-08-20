@@ -19,8 +19,8 @@ import PropTypes from 'prop-types';
     </div>)
     }
     MovieDetails.propTypes = {
-        title:PropTypes.number.isRequired ,
-        rating:PropTypes.number,
+        title:PropTypes.string.isRequired ,
+        rating:PropTypes.string,
         pg:PropTypes.string,
         posterUrl:PropTypes.string
     }

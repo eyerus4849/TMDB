@@ -34,9 +34,10 @@ margin-left: 10px;
 .movie{
   border: 1px solid black;
   margin-bottom: 50px;
-  width: 400px;
-  margin-left: 100px;
-  
+  width: 100px ;
+  margin-left: 50px;
+  margin-top: 40px;
+  /* background-color:red ; */
 }
 .App {
   /* text-align: center; */
@@ -45,7 +46,7 @@ margin-left: 10px;
 
 }
 .movie img{
- max-width: 100%;
+ width: 100px;
 }
 .type{
   width:50px ;
@@ -58,9 +59,32 @@ margin-left: 3px;
 .title{
   padding-left: 1px; 
 }
+.search-input{
+  padding: 10px;
+  width: 400px;
+  border-radius: 5px;
+}
+.search-type{
+  padding: 10px;
+  width: 50px;
+  margin-left: 30px;
+  border-radius: 5px;
+  /* border-top-right-radius: 0; */
+  /* border-right: none; */
+}
+.search-drop{
+  padding: 10px;
+  width: 20px;
+  border-radius: 5px;
+  /* border-left: none; */
+  /* border-top-left-radius: 0; */
+  
+}
 .movie_list{
   display: flex;
-  width: 400px;
+  flex-wrap: wrap ;
+  margin-top: 50px;
+  
 }
 /* .App-logo {
   height: 40vmin;
