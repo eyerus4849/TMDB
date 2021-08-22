@@ -14,6 +14,7 @@ import PropTypes from 'prop-types';
      <p>{props.actors_name}</p>
      <h3>Released</h3>
      <p>{props.Released}</p>
+     <p>{props.award}</p>
       </div>
       
     </div>)

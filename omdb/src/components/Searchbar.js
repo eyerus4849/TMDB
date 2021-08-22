@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState,useEffect } from "react"
 
 const Searchbar=({onchangestring,onchangetype})=>{
     // const [moviesearchstring,setmoviesearchstring]=useState('')
@@ -13,10 +13,13 @@ const Searchbar=({onchangestring,onchangetype})=>{
     // }
     // console.log(moviesearchstring)
     // console.log(moviesearchtype)
-    
+    const[state,setstate]=useState(1)
+    // setstate(2)
+   
 return(
     
     <div>
+        
         <input className="search-input" onChange={onchangestring} placeholder="Enter movies, series, or episode name..."></input>
         <span className="search-type"> <input onChange={onchangetype}  className="search-type" placeholder="Type"></input>
     
@@ -26,6 +29,8 @@ return(
             <option value="game">movie
             </option>
             <option value="game">Game
+            </option>
+            <option value="game">Series
             </option>
     </select></span>
        

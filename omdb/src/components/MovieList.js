@@ -6,19 +6,20 @@ import Searchbar from './Searchbar';
 const MovieList=({onclicked })=>{
 
     const[searchTerm,setsearchTerm  ]=useState("batman")
+    const[searchType,setsearchType  ]=useState("movie")
 const[isLoading,setisLoading  ]=useState(false)
 const[movies,setmovies  ]=useState([])
 const[error ,seterror   ]=useState(null)
 const[movieDetail,setmoviesDetail  ]=useState([])
     const [moviesearchstring,setmoviesearchstring]=useState('')
-    const [moviesearchtype,setmoviesearchtype]=useState('')
+    // const [moviesearchtype,setmoviesearchtype]=useState('')
     const onchangestring=(event)=>{
-        console.log(event.target)
+        // console.log(event.target)
         setsearchTerm(event.target.value)
     }
     const onchangetype=(event)=>{
         console.log(event.target)
-        setmoviesearchtype(event.target.value)
+        setsearchType(event.target.value)
     }
     // console.log(moviesearchstring)
     // console.log(moviesearchtype)
@@ -28,7 +29,7 @@ const[movieDetail,setmoviesDetail  ]=useState([])
     return str?.length>n ? str.substr(0,n-1)+"...":str;
         }
 useEffect(()=>{
-getMoviesBySearchTerm(searchTerm).then((movie)=>
+getMoviesBySearchTerm(searchTerm,searchType).then((movie)=>
     {
       setmovies(movie.Search)
      
@@ -36,20 +37,22 @@ getMoviesBySearchTerm(searchTerm).then((movie)=>
     ).catch((error)=>{
       setmovies([])
     })
-},[searchTerm])
+   
+},[searchTerm,searchType])
 
 console.log(movies)
     return (<div className="movie_list">
          <Searchbar onchangestring={onchangestring} onchangetype={onchangetype}/>
-      {movies ? movies.map((EachMovie,i)=>(
+      {
+      movies ? 
+      movies.map((EachMovie,i)=>(
              
              <Moviecard key={i} posterUrl={EachMovie.Poster} title={truncate(EachMovie.Title,12)} type={"movie"} buttononclick={onclicked} movieId={EachMovie.imdbID}  />
             
-    )):<p>Searching for a movie...</p>
-    
+    ))
+    :<p>Searching for a movie...</p>
     }  
-         
-    </div>
+</div>
         
        
     )

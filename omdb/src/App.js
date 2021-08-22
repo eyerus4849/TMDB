@@ -21,6 +21,7 @@ const[searchID,setsearchID  ]=useState("tt0372784")
 const[isLoading,setisLoading  ]=useState(false)
 const[movies,setmovies  ]=useState([])
 const[movieDetail,setmoviesDetail  ]=useState([])
+
 const[error ,seterror   ]=useState(null)
 useEffect(()=>{
   setisLoading(true)
@@ -42,6 +43,7 @@ useEffect(()=>{
     // })
  
 },[])
+console.log(movieDetail)
 const[show,setshow]=useState(false)
   return (
     <div className="App">
@@ -54,12 +56,15 @@ const[show,setshow]=useState(false)
           setmoviesDetail(movieDetail)
         })
       }}searchTerm="batman" />} 
-     
-    {show&& <Modal onClose={()=>{
+    
+    {/* {show&&  */}
+    <Modal show ={show}onClose={()=>{
         setshow(false)
       }} >
-      <MovieDetails posterUrl={movieDetail.Poster} title={movieDetail.Title} rating={movieDetail.imdbRating} pg={movieDetail.Rated} hour={movieDetail.Runtime} category={movieDetail.Genre} description={movieDetail.Plot} actors_name={movieDetail.Actors} Released={movieDetail.Released}/>
-      </Modal>}  
+      <MovieDetails posterUrl={movieDetail.Poster} title={movieDetail.Title} rating={movieDetail.imdbRating} pg={movieDetail.Rated} hour={movieDetail.Runtime} category={movieDetail.Genre} description={movieDetail.Plot} actors_name={movieDetail.Actors} Released={movieDetail.Released} award={movieDetail.Awards}/>
+      
+      </Modal>
+      {/* }   */}
     
     </div>
     
