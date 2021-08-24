@@ -2,8 +2,8 @@ import Moviecard from "./Moviecard"
 import React ,{useState,useEffect} from 'react'
 import {getMoviesBySearchTerm} from '../getmovie'
 import Searchbar from './Searchbar';
-
-const MovieList=({onclicked })=>{
+import Pagination from "react-js-pagination";
+const MovieList=({onclicked,page })=>{
 
     const[searchTerm,setsearchTerm  ]=useState("batman")
     const[searchType,setsearchType  ]=useState("movie")
@@ -11,6 +11,7 @@ const[isLoading,setisLoading  ]=useState(false)
 const[movies,setmovies  ]=useState([])
 const[error ,seterror   ]=useState(null)
 const[movieDetail,setmoviesDetail  ]=useState([])
+const[pageNumber,setpageNumber]=useState(1)
     const [moviesearchstring,setmoviesearchstring]=useState('')
     // const [moviesearchtype,setmoviesearchtype]=useState('')
     const onchangestring=(event)=>{
@@ -29,7 +30,7 @@ const[movieDetail,setmoviesDetail  ]=useState([])
     return str?.length>n ? str.substr(0,n-1)+"...":str;
         }
 useEffect(()=>{
-getMoviesBySearchTerm(searchTerm,searchType).then((movie)=>
+getMoviesBySearchTerm(searchTerm,searchType,pageNumber).then((movie)=>
     {
       setmovies(movie.Search)
      
@@ -38,20 +39,38 @@ getMoviesBySearchTerm(searchTerm,searchType).then((movie)=>
       setmovies([])
     })
    
-},[searchTerm,searchType])
-
+},[searchTerm,searchType,pageNumber])
+const handlePageChange=(pageNumber)=> {
+    console.log(`active page is ${pageNumber}`);
+    setpageNumber(pageNumber);
+  }
+  console.log(pageNumber)
 console.log(movies)
-    return (<div className="movie_list">
+    return (<div >
+        
          <Searchbar onchangestring={onchangestring} onchangetype={onchangetype}/>
-      {
+         <div className="movie_list">
+         {
       movies ? 
       movies.map((EachMovie,i)=>(
-             
-             <Moviecard key={i} posterUrl={EachMovie.Poster} title={truncate(EachMovie.Title,12)} type={"movie"} buttononclick={onclicked} movieId={EachMovie.imdbID}  />
+        //   we can use // buttononclick={onclicked} 0r  
+        // buttononclick={() => onclicked(EachMovie.imdbID)} if we use it this way we don't need to pass movieid as a props on movie card component
+        
+       
+             <Moviecard key={i} posterUrl={EachMovie.Poster} title={truncate(EachMovie.Title,12)} type={EachMovie.Type} buttononclick={onclicked}   movieId={EachMovie.imdbID}  />
             
     ))
     :<p>Searching for a movie...</p>
-    }  
+    }
+    
+         </div>
+         <Pagination 
+          activePage={pageNumber}
+          itemsCountPerPage={10}
+          totalItemsCount={450}
+          pageRangeDisplayed={5}
+          onChange={handlePageChange}
+        />
 </div>
         
        

@@ -1,4 +1,3 @@
-  
   const Moviecard =(props) =>{
   
     return (<div className="movie" onClick={()=>{props.buttononclick(props.movieId)} }>

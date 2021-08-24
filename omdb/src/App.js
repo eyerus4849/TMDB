@@ -45,10 +45,11 @@ useEffect(()=>{
 },[])
 console.log(movieDetail)
 const[show,setshow]=useState(false)
+
   return (
     <div className="App">
        {/* <Searchbar/> */}
-       {!show&&<MovieList onclicked={(SingleMovieId)=>{
+       {!show&&<MovieList  onclicked={(SingleMovieId)=>{
           console.log(SingleMovieId)
         setshow(true)
         getMoviesById(SingleMovieId).then((movieDetail)=>
@@ -58,6 +59,7 @@ const[show,setshow]=useState(false)
       }}searchTerm="batman" />} 
     
     {/* {show&&  */}
+    
     <Modal show ={show}onClose={()=>{
         setshow(false)
       }} >
