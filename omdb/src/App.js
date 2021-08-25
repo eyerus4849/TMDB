@@ -49,16 +49,19 @@ const[show,setshow]=useState(false)
   return (
     <div className="App">
        {/* <Searchbar/> */}
-       {!show&&<MovieList  onclicked={(SingleMovieId)=>{
+       {/* {
+       !show&& */}
+       <MovieList  onclicked={(SingleMovieId)=>{
           console.log(SingleMovieId)
         setshow(true)
         getMoviesById(SingleMovieId).then((movieDetail)=>
         {
           setmoviesDetail(movieDetail)
         })
-      }}searchTerm="batman" />} 
+      }}searchTerm="batman" />
+      {/* }  */}
     
-    {/* {show&&  */}
+    {show&& 
     
     <Modal show ={show}onClose={()=>{
         setshow(false)
@@ -66,7 +69,7 @@ const[show,setshow]=useState(false)
       <MovieDetails posterUrl={movieDetail.Poster} title={movieDetail.Title} rating={movieDetail.imdbRating} pg={movieDetail.Rated} hour={movieDetail.Runtime} category={movieDetail.Genre} description={movieDetail.Plot} actors_name={movieDetail.Actors} Released={movieDetail.Released} award={movieDetail.Awards}/>
       
       </Modal>
-      {/* }   */}
+      }
     
     </div>
     

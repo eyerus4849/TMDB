@@ -11,7 +11,7 @@ display: flex;
 }
 .movie_detail{
   display: flex;
-  width: 550px;
+  /* width: 550px; */
 }
 .movie_img{
   width: 600px;
@@ -127,6 +127,10 @@ ul.pagination li.active {
 ul.pagination li a:hover,
 ul.pagination li a.active {
   color: blue;
+}
+.movielist{
+  margin-bottom: 50px;
+
 }
 /* .Pagination{
   display: flex;

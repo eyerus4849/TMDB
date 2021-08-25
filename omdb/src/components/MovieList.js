@@ -46,7 +46,7 @@ const handlePageChange=(pageNumber)=> {
   }
   console.log(pageNumber)
 console.log(movies)
-    return (<div >
+    return (<div className="movielist" >
         
          <Searchbar onchangestring={onchangestring} onchangetype={onchangetype}/>
          <div className="movie_list">
@@ -66,9 +66,9 @@ console.log(movies)
          </div>
          <Pagination 
           activePage={pageNumber}
-          itemsCountPerPage={10}
-          totalItemsCount={450}
-          pageRangeDisplayed={5}
+        //   itemsCountPerPage={10}
+          totalItemsCount={200}
+          pageRangeDisplayed={10}
           onChange={handlePageChange}
         />
 </div>
