@@ -7,6 +7,8 @@ const MovieList=({onclicked,page })=>{
 
     const[searchTerm,setsearchTerm  ]=useState("batman")
     const[searchType,setsearchType  ]=useState("movie")
+    const[Term,setTerm  ]=useState("batman")
+    const[Type,setType  ]=useState("movie")
 const[isLoading,setisLoading  ]=useState(false)
 const[movies,setmovies  ]=useState([])
 const[error ,seterror   ]=useState(null)
@@ -16,11 +18,15 @@ const[pageNumber,setpageNumber]=useState(1)
     // const [moviesearchtype,setmoviesearchtype]=useState('')
     const onchangestring=(event)=>{
         // console.log(event.target)
-        setsearchTerm(event.target.value)
+        setTerm(event.target.value)
     }
     const onchangetype=(event)=>{
         console.log(event.target)
-        setsearchType(event.target.value)
+        setType(event.target.value)
+    }
+    const handlesearch =()=>{
+        setsearchTerm(Term)
+        setsearchType(Type)
     }
     // console.log(moviesearchstring)
     // console.log(moviesearchtype)
@@ -48,7 +54,7 @@ const handlePageChange=(pageNumber)=> {
 console.log(movies)
     return (<div className="movielist" >
         
-         <Searchbar onchangestring={onchangestring} onchangetype={onchangetype}/>
+         <Searchbar onchangestring={onchangestring} onchangetype={onchangetype} handlesearch={handlesearch}/>
          <div className="movie_list">
          {
       movies ? 

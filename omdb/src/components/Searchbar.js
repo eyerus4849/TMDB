@@ -1,6 +1,6 @@
 import { useState,useEffect } from "react"
 
-const Searchbar=({onchangestring,onchangetype})=>{
+const Searchbar=({onchangestring,onchangetype,handlesearch})=>{
     // const [moviesearchstring,setmoviesearchstring]=useState('')
     // const [moviesearchtype,setmoviesearchtype]=useState('')
     // const onchangestring=(event)=>{
@@ -23,7 +23,7 @@ return(
         <input className="search-input" onChange={onchangestring} placeholder="Enter movies, series, or episode name..."></input>
         <span className="search-type"> <input onChange={onchangetype}  className="search-type" placeholder="Enter Type"></input>
     
-    <select className="search-drop" placeholder="type" onClick={onchangetype}>
+    <select className="search-drop" placeholder="type" onClick={onchangetype} >
         <option value="" disabled selected >
         Type
             </option>
@@ -34,7 +34,7 @@ return(
             <option value="series">Series
             </option>
     </select></span>
-       
+       <button onClick={handlesearch}>Search</button>
     </div>
 )
 }
