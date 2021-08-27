@@ -34,7 +34,7 @@ return(
             <option value="series">Series
             </option>
     </select></span>
-       <button onClick={handlesearch}>Search</button>
+       <button className="search-type" onClick={handlesearch}>Search</button>
     </div>
 )
 }

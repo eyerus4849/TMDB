@@ -3,6 +3,8 @@ import React ,{useState,useEffect} from 'react'
 import {getMoviesBySearchTerm} from '../getmovie'
 import Searchbar from './Searchbar';
 import Pagination from "react-js-pagination";
+import Custompagination from "./Custompagination";
+
 const MovieList=({onclicked,page })=>{
 
     const[searchTerm,setsearchTerm  ]=useState("batman")
@@ -14,6 +16,7 @@ const[movies,setmovies  ]=useState([])
 const[error ,seterror   ]=useState(null)
 const[movieDetail,setmoviesDetail  ]=useState([])
 const[pageNumber,setpageNumber]=useState(1)
+const[totalpage,settotalpage]=useState()
     const [moviesearchstring,setmoviesearchstring]=useState('')
     // const [moviesearchtype,setmoviesearchtype]=useState('')
     const onchangestring=(event)=>{
@@ -39,6 +42,8 @@ useEffect(()=>{
 getMoviesBySearchTerm(searchTerm,searchType,pageNumber).then((movie)=>
     {
       setmovies(movie.Search)
+      settotalpage(Math.floor(movie.totalResults/10))
+     console.log(movie)
      
     }
     ).catch((error)=>{
@@ -50,6 +55,15 @@ const handlePageChange=(pageNumber)=> {
     console.log(`active page is ${pageNumber}`);
     setpageNumber(pageNumber);
   }
+  const handlenext=()=>{
+      if(pageNumber<totalpage){setpageNumber(pageNumber+1)}
+    
+  }
+  const handleprev=()=>{
+    if(pageNumber>1){
+    setpageNumber(pageNumber-1)
+}
+}
   console.log(pageNumber)
 console.log(movies)
     return (<div className="movielist" >
@@ -63,20 +77,21 @@ console.log(movies)
         // buttononclick={() => onclicked(EachMovie.imdbID)} if we use it this way we don't need to pass movieid as a props on movie card component
         
        
-             <Moviecard key={i} posterUrl={EachMovie.Poster} title={truncate(EachMovie.Title,12)} type={EachMovie.Type} buttononclick={onclicked}   movieId={EachMovie.imdbID}  />
+             <Moviecard key={i} posterUrl={EachMovie.Poster} title={truncate(EachMovie.Title,10)} type={EachMovie.Type} buttononclick={onclicked}   movieId={EachMovie.imdbID}  />
             
     ))
-    :<p>Searching for a movie...</p>
+    :<p>No Movies found By that name</p>
     }
     
          </div>
-         <Pagination 
+
+      {movies && <> <Pagination 
           activePage={pageNumber}
         //   itemsCountPerPage={10}
-          totalItemsCount={200}
+          totalItemsCount={totalpage*10}
           pageRangeDisplayed={10}
           onChange={handlePageChange}
-        />
+        /><Custompagination handlenext={handlenext} handleprev={handleprev}pagenumber={pageNumber}totalpage={totalpage}/></> }  
 </div>
         
        

@@ -35,7 +35,7 @@ margin-left: 10px;
 .movie{
   border: 1px solid black;
   margin-bottom: 50px;
-  /* width: 100px ; */
+  width: 100px ;
   margin-left: 50px;
   margin-top: 40px;
   display: inline-block;
@@ -46,8 +46,8 @@ margin-left: 10px;
   text-align: center;
   width:200px;
 } */
-.movie img{
- width: 100px;
+img{
+ width: 100%;
 }
 .type{
   border: 1px solid red;
@@ -59,6 +59,7 @@ display: inline-block;
 }
 .title{
   padding-left: 1px; 
+  display: inline-block;
 }
 .search-input{
   padding: 10px;
@@ -88,6 +89,7 @@ display: inline-block;
   margin-top: 50px;
   
 }
+
 .pagination {
   justify-content: center;
   

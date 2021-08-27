@@ -24,6 +24,7 @@ const[movieDetail,setmoviesDetail  ]=useState([])
 
 const[error ,seterror   ]=useState(null)
 useEffect(()=>{
+  
   setisLoading(true)
   setTimeout(()=>{getMoviesBySearchTerm(searchTerm).then((movie)=>
     {
