@@ -1,14 +1,35 @@
 import React from 'react'
 import PropTypes from 'prop-types';
-import { Button,Paragragh,Div } from "../style"
+import styled ,{css} from'styled-components'
+const Div=styled.div`
+width:${(props)=>props.width};
+margin:${(props)=>props.margin};
+border:${(props)=>props.border};
+ display: ${(props)=>props.display};
+
+ & img{
+   height:100%;
+   width:300px
+}
+ 
+ 
+ ${(props)=>props.shaded && css`
+ background-color: silver;
+  border-radius: 5px;
+  padding: 0 5px;
+  margin:10px  ;
+ `};
+  
+`
+
   const MovieDetails =(props) =>{
  
     return (<Div display="flex" >
-        <Div className="movie_img" > <img  src={props.posterUrl} alt="movie poster"></img></Div>
+        <Div width= "600px"> <img  src={props.posterUrl} alt="movie poster"></img></Div>
      <Div margin="0 0 0 10px">
-         <Div className="title_rate"><h4 className="detail_title">{props.title}</h4> <h4 className="rate">{props.rating}</h4> </Div>
-     <Div> <span className="hour">{props.pg}</span><span className="hour">{props.hour}</span>  </Div>
-     <Div className="hour">{props.category}</Div>
+         <Div display="flex"><h4 style={{width:"200px"}} >{props.title}</h4> <h4 style= {{color:"blue"}}>{props.rating}</h4> </Div>
+     <Div display="flex"> <Div shaded>{props.pg}</Div><Div shaded>{props.hour}</Div>  </Div>
+     <Div shaded >{props.category}</Div>
      <h3>plot</h3>
      <p>{props.description}</p>
      <h3>Actors</h3>
@@ -22,7 +43,7 @@ import { Button,Paragragh,Div } from "../style"
     }
     MovieDetails.propTypes = {
         title:PropTypes.string.isRequired ,
-        rating:PropTypes.string,
+        // rating:PropTypes.number,
         pg:PropTypes.string,
         posterUrl:PropTypes.string
     }

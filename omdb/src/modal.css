@@ -1,4 +1,4 @@
-.modal {
+.modal_custom {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,18 +11,18 @@
     background-color: rgba(0, 0, 0, 0.8);
   }
   
-  .modal-content {
+  .modal-conten {
     width: 70%;
     padding: 20px;
     background-color: lightgrey;
   }
   
-  .modal-close-button-container {
+  .modal-close-button-containe {
     text-align: right;
     margin-bottom: 20px;
   }
   
-  .modal-close-button-container button {
+  .modal-close-button-containe button {
     display: inline-block;
     width: 48px;
     height: 48px;

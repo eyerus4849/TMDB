@@ -6,7 +6,7 @@ import {getMoviesById} from './getmoviedetail'
 import React ,{useState,useEffect} from 'react'
 import MovieDetails from './components/MovieDetails';
 import MovieList from './components/MovieList';
-import Modal from './components/Modal'
+import Modal from './components/Modalcomponent'
 import Searchbar from './components/Searchbar';
 
 function App() {
@@ -16,6 +16,7 @@ function App() {
   function truncate(str,n){
     return str?.length>n ? str.substr(0,n-1)+"...":str;
         }
+        const [modalShow, setModalShow] = React.useState(false);
 const[searchTerm,setsearchTerm  ]=useState("batman")
 const[searchID,setsearchID  ]=useState("tt0372784")
 const[isLoading,setisLoading  ]=useState(false)
@@ -55,6 +56,8 @@ const[show,setshow]=useState(false)
        <MovieList  onclicked={(SingleMovieId)=>{
           console.log(SingleMovieId)
         setshow(true)
+        console.log(show)
+        setModalShow(true)
         getMoviesById(SingleMovieId).then((movieDetail)=>
         {
           setmoviesDetail(movieDetail)
@@ -62,13 +65,14 @@ const[show,setshow]=useState(false)
       }}searchTerm="batman" />
       {/* }  */}
     
-    {show&& 
+    {show && 
     
     <Modal show ={show}onClose={()=>{
         setshow(false)
-      }} >
+      }} show={modalShow}
+      onHide={() => setModalShow(false)} >
       <MovieDetails posterUrl={movieDetail.Poster} title={movieDetail.Title} rating={movieDetail.imdbRating} pg={movieDetail.Rated} hour={movieDetail.Runtime} category={movieDetail.Genre} description={movieDetail.Plot} actors_name={movieDetail.Actors} Released={movieDetail.Released} award={movieDetail.Awards}/>
-      
+    
       </Modal>
       }
     

@@ -24,7 +24,7 @@ return(
         <span className="search-type"> <input onChange={onchangetype}  className="search-type" placeholder="Enter Type"></input>
     
     <select className="search-drop" placeholder="type" onClick={onchangetype} >
-        <option value="" disabled selected >
+        <option value="" selected disabled >
         Type
             </option>
             <option value="movie">Movie
